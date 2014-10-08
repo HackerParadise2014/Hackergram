@@ -11,9 +11,27 @@ import UIKit
 class UserTableViewController: UITableViewController {
     
     var users:[User] = []
+    var refresher:UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.refresher = UIRefreshControl()
+        self.refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refresher.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refresher)
+        
+        self.refreshData()
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func refreshData() {
         
         var query = PFUser.query()
         query.findObjectsInBackgroundWithBlock( { (objects: [AnyObject]!, error: NSError!) -> Void in
@@ -23,7 +41,6 @@ class UserTableViewController: UITableViewController {
                 var user:PFUser = object as PFUser
                 var isFollowing:Bool
                 isFollowing = false
-                
                 
                 if(user.username != PFUser.currentUser().username) {
                     var curUser = User()
@@ -43,7 +60,7 @@ class UserTableViewController: UITableViewController {
                             }
                             
                             self.users.append(curUser)
-                            
+                            self.users.sort { $0.username < $1.username }
                             self.tableView.reloadData()
                             
                             
@@ -51,6 +68,11 @@ class UserTableViewController: UITableViewController {
                             // Log details of the failure
                             println(error)
                         }
+                        
+                        
+                        self.refresher.endRefreshing()
+                        
+                        
                     }
                 }
                 
@@ -59,11 +81,13 @@ class UserTableViewController: UITableViewController {
             }
         })
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func refresh() {
+        println("FRESHIZZLE")
+        self.refreshData()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -91,7 +115,8 @@ class UserTableViewController: UITableViewController {
         
         cell.textLabel?.text = self.users[indexPath.row].username
         
-
+        cell.accessoryType = UITableViewCellAccessoryType.None
+        
         if self.users[indexPath.row].isFollowing == true {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
@@ -100,7 +125,7 @@ class UserTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println(indexPath.row)
+        println("didSelect")
         
         var cell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         
@@ -117,6 +142,7 @@ class UserTableViewController: UITableViewController {
                     
                     for object in objects {
                         object.deleteInBackground()
+                        println("deleted")
                     }
                 } else {
                     // Log details of the failure
@@ -134,6 +160,7 @@ class UserTableViewController: UITableViewController {
             following["follower"] = PFUser.currentUser().username
             
             following.saveInBackground()
+            println("saved")
             
         }
         
