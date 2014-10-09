@@ -37,6 +37,14 @@ class SignupViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -76,6 +84,7 @@ class SignupViewController: UIViewController {
                 self.username.text = ""
                 self.password.text = ""
                 self.email.text = ""
+                self.performSegueWithIdentifier("toUserListSegue", sender: self)
                 
             } else {
                 println("Failure: \(error)")

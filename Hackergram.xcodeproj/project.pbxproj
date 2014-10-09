@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		495E750119E6DF4500AEDC46 /* postViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E750019E6DF4500AEDC46 /* postViewController.swift */; };
+		495E750319E6E01E00AEDC46 /* truck.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 495E750219E6E01E00AEDC46 /* truck.jpeg */; };
+		495E750519E6E05900AEDC46 /* monkey.png in Resources */ = {isa = PBXBuildFile; fileRef = 495E750419E6E05900AEDC46 /* monkey.png */; };
 		4979017C19DAFA7A0055322E /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979017B19DAFA7A0055322E /* SignupViewController.swift */; };
 		498F4D5D19DD9471006F94D9 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498F4D5C19DD9471006F94D9 /* UserTableViewController.swift */; };
 		49ACB2CC19E58B9F00CBF141 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ACB2CB19E58B9F00CBF141 /* User.swift */; };
@@ -41,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		495E750019E6DF4500AEDC46 /* postViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postViewController.swift; sourceTree = "<group>"; };
+		495E750219E6E01E00AEDC46 /* truck.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = truck.jpeg; sourceTree = "<group>"; };
+		495E750419E6E05900AEDC46 /* monkey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monkey.png; sourceTree = "<group>"; };
 		4979017B19DAFA7A0055322E /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		498F4D5C19DD9471006F94D9 /* UserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		49ACB2CB19E58B9F00CBF141 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -145,6 +151,7 @@
 				4979017B19DAFA7A0055322E /* SignupViewController.swift */,
 				49B7458B19D45CCD0059EC80 /* Main.storyboard */,
 				498F4D5C19DD9471006F94D9 /* UserTableViewController.swift */,
+				495E750019E6DF4500AEDC46 /* postViewController.swift */,
 				49B7458E19D45CCD0059EC80 /* Images.xcassets */,
 				49B7459019D45CCD0059EC80 /* LaunchScreen.xib */,
 				49B7458519D45CCD0059EC80 /* Supporting Files */,
@@ -157,6 +164,8 @@
 		49B7458519D45CCD0059EC80 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				495E750419E6E05900AEDC46 /* monkey.png */,
+				495E750219E6E01E00AEDC46 /* truck.jpeg */,
 				49B7458619D45CCD0059EC80 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -261,7 +270,9 @@
 			files = (
 				49B7458D19D45CCD0059EC80 /* Main.storyboard in Resources */,
 				49B7459219D45CCD0059EC80 /* LaunchScreen.xib in Resources */,
+				495E750519E6E05900AEDC46 /* monkey.png in Resources */,
 				49B7458F19D45CCD0059EC80 /* Images.xcassets in Resources */,
+				495E750319E6E01E00AEDC46 /* truck.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +292,7 @@
 			files = (
 				498F4D5D19DD9471006F94D9 /* UserTableViewController.swift in Sources */,
 				4979017C19DAFA7A0055322E /* SignupViewController.swift in Sources */,
+				495E750119E6DF4500AEDC46 /* postViewController.swift in Sources */,
 				49B7458A19D45CCD0059EC80 /* ViewController.swift in Sources */,
 				49ACB2CC19E58B9F00CBF141 /* User.swift in Sources */,
 				49B7458819D45CCD0059EC80 /* AppDelegate.swift in Sources */,
