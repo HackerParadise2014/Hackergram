@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		495686E019E709DA000A2672 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495686DF19E709DA000A2672 /* FeedViewController.swift */; };
+		495686E219E70A64000A2672 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495686E119E70A64000A2672 /* FeedCell.swift */; };
 		495E750119E6DF4500AEDC46 /* postViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E750019E6DF4500AEDC46 /* postViewController.swift */; };
 		495E750319E6E01E00AEDC46 /* truck.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 495E750219E6E01E00AEDC46 /* truck.jpeg */; };
 		495E750519E6E05900AEDC46 /* monkey.png in Resources */ = {isa = PBXBuildFile; fileRef = 495E750419E6E05900AEDC46 /* monkey.png */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		495686DF19E709DA000A2672 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		495686E119E70A64000A2672 /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		495E750019E6DF4500AEDC46 /* postViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postViewController.swift; sourceTree = "<group>"; };
 		495E750219E6E01E00AEDC46 /* truck.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = truck.jpeg; sourceTree = "<group>"; };
 		495E750419E6E05900AEDC46 /* monkey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monkey.png; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 				49B7458919D45CCD0059EC80 /* ViewController.swift */,
 				4979017B19DAFA7A0055322E /* SignupViewController.swift */,
 				49B7458B19D45CCD0059EC80 /* Main.storyboard */,
+				495686E119E70A64000A2672 /* FeedCell.swift */,
+				495686DF19E709DA000A2672 /* FeedViewController.swift */,
 				498F4D5C19DD9471006F94D9 /* UserTableViewController.swift */,
 				495E750019E6DF4500AEDC46 /* postViewController.swift */,
 				49B7458E19D45CCD0059EC80 /* Images.xcassets */,
@@ -295,7 +301,9 @@
 				495E750119E6DF4500AEDC46 /* postViewController.swift in Sources */,
 				49B7458A19D45CCD0059EC80 /* ViewController.swift in Sources */,
 				49ACB2CC19E58B9F00CBF141 /* User.swift in Sources */,
+				495686E219E70A64000A2672 /* FeedCell.swift in Sources */,
 				49B7458819D45CCD0059EC80 /* AppDelegate.swift in Sources */,
+				495686E019E709DA000A2672 /* FeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

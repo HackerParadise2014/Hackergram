@@ -80,12 +80,12 @@ class SignupViewController: UIViewController {
             if error == nil {
                 // Hooray! Let them use the app now.
                 println("create account success")
-                self.showAlertWithMessage("Success", message: "Account successfully created.")
+//                self.showAlertWithMessage("Success", message: "Account successfully created.")
                 self.username.text = ""
                 self.password.text = ""
                 self.email.text = ""
                 self.performSegueWithIdentifier("toUserListSegue", sender: self)
-                
+                println("doing toUserListSegue ")
             } else {
                 println("Failure: \(error)")
                 
