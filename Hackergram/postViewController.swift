@@ -7,13 +7,11 @@
 //
 
 import UIKit
-import AVFoundation
 
 class postViewController: UIViewController,UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     var activityIndicator = UIActivityIndicatorView()
     var photoSelected:Bool = false
-    var captureDevice : AVCaptureDevice?
-    let captureSession = AVCaptureSession()
+
 
     
     @IBOutlet weak var imageToPost: UIImageView!
@@ -25,27 +23,12 @@ class postViewController: UIViewController,UINavigationControllerDelegate, UIIma
     
     
     @IBAction func chooseImage(sender: UIButton) {
-        captureSession.sessionPreset = AVCaptureSessionPresetLow
-        
-        let devices = AVCaptureDevice.devices()
-        
-        // Loop through all the capture devices on this phone
-        for device in devices {
-            println(device)
-            // Make sure this particular device supports video
-            if (device.hasMediaType(AVMediaTypeVideo)) {
-                // Finally check the position and confirm we've got the back camera
-                if(device.position == AVCaptureDevicePosition.Back) {
-                    captureDevice = device as? AVCaptureDevice
-                }
-            }
-        }
-        
+
         
         var image = UIImagePickerController()
         image.delegate = self
         
-        if true {
+        if TARGET_IPHONE_SIMULATOR != 1 {
             println("has a camera available")
             image.sourceType = UIImagePickerControllerSourceType.Camera
         }
@@ -160,6 +143,7 @@ class postViewController: UIViewController,UINavigationControllerDelegate, UIIma
     }
     
     override func viewDidLoad() {
+        println("device: \(TARGET_IPHONE_SIMULATOR)")
         self.shareText.delegate = self
         super.viewDidLoad()
         Parse.setApplicationId("ZJHaDPsK5OS63UJfEv7GGtfKEu2K2wYjFQLMRU3L", clientKey: "fgrift4Ic04xVqQIkvfa6LqQfg7UFCEXjqdmvbbO")
