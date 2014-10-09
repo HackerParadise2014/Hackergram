@@ -75,7 +75,22 @@ class postViewController: UIViewController,UINavigationControllerDelegate, UIIma
                     self.displayAlert(title: "Cannot post image", message: "Please try again later")
                 }
                 else {
-                    let imageData = UIImagePNGRepresentation(self.imageToPost.image)
+                    
+                    let image = self.imageToPost.image!
+                    
+                    let size = CGSizeApplyAffineTransform(image.size, CGAffineTransformMakeScale(0.1, 0.1))
+                    let hasAlpha = false
+                    let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
+                    
+                    UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
+                    image.drawInRect(CGRect(origin: CGPointZero, size: size))
+                    
+                    let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+                    
+                    
+                    let imageData = UIImagePNGRepresentation(scaledImage)
+                    
+                    
                     let imageFile = PFFile(name: "image.png", data: imageData)
                     post["imageFile"] = imageFile
                     

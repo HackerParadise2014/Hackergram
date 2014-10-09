@@ -57,7 +57,8 @@ class FeedViewController: UITableViewController {
             var followedUser = ""
             
             if error == nil {
-                for object in objects {
+                for object in objects {                 
+                    
                     followedUser = object["following"] as String
                     var query = PFQuery(className: "Post")
                     query.whereKey("username", equalTo: followedUser)
@@ -71,6 +72,7 @@ class FeedViewController: UITableViewController {
                             // find suceeded
                             
                             println("successfully retrieved \(objects.count) images")
+                            
                             
                             for object in objects {
                                 

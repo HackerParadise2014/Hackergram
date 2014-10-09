@@ -80,7 +80,13 @@ class SignupViewController: UIViewController {
             if error == nil {
                 // Hooray! Let them use the app now.
                 println("create account success")
-//                self.showAlertWithMessage("Success", message: "Account successfully created.")
+                
+                // setup hack to follow yourself
+                var following = PFObject(className: "followers")
+                following["following"] = PFUser.currentUser().username
+                following["follower"] = PFUser.currentUser().username
+                following.saveInBackground()
+                
                 self.username.text = ""
                 self.password.text = ""
                 self.email.text = ""
