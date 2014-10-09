@@ -135,7 +135,7 @@ class FeedViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 230
+        return 270
     }
     
     /*

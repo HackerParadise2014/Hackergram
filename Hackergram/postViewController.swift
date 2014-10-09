@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import AVFoundation
 
-class postViewController: UIViewController,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class postViewController: UIViewController,UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     var activityIndicator = UIActivityIndicatorView()
-    
     var photoSelected:Bool = false
+    var captureDevice : AVCaptureDevice?
+    let captureSession = AVCaptureSession()
+
     
     @IBOutlet weak var imageToPost: UIImageView!
     
@@ -22,9 +25,36 @@ class postViewController: UIViewController,UINavigationControllerDelegate, UIIma
     
     
     @IBAction func chooseImage(sender: UIButton) {
+        captureSession.sessionPreset = AVCaptureSessionPresetLow
+        
+        let devices = AVCaptureDevice.devices()
+        
+        // Loop through all the capture devices on this phone
+        for device in devices {
+            println(device)
+            // Make sure this particular device supports video
+            if (device.hasMediaType(AVMediaTypeVideo)) {
+                // Finally check the position and confirm we've got the back camera
+                if(device.position == AVCaptureDevicePosition.Back) {
+                    captureDevice = device as? AVCaptureDevice
+                }
+            }
+        }
+        
+        
         var image = UIImagePickerController()
         image.delegate = self
-        image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        
+        if true {
+            println("has a camera available")
+            image.sourceType = UIImagePickerControllerSourceType.Camera
+        }
+        else {
+            println("NO camera available")
+            image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            
+        }
+        
         image.allowsEditing = false
         
         self.photoSelected = true
@@ -48,6 +78,7 @@ class postViewController: UIViewController,UINavigationControllerDelegate, UIIma
         }
         
         if error != "" {
+            self.resumeFromProgressBar()
             displayAlert(title: "Cannot post image", message: error)
         } else {
             var post = PFObject(className: "Post")
@@ -68,21 +99,21 @@ class postViewController: UIViewController,UINavigationControllerDelegate, UIIma
                     post.saveInBackgroundWithBlock({ (success: Bool!, error: NSError!) -> Void in
                         if success == false {
                             self.resumeFromProgressBar()
-
+                            
                             self.displayAlert(title: "Cannot post image", message: "Please try again later")
                             
                         }
                         else {
                             println("SAVEDD!!")
-                            
+                            self.resumeFromProgressBar()
+
                             self.displayAlert(title: "YAYER", message: "Posted that image!")
                             
                             
                             self.photoSelected = false
                             self.imageToPost.image = UIImage(named: "monkey.png")
                             self.shareText.text = ""
-                            self.resumeFromProgressBar()
-
+                            
                         }
                     })
                     
@@ -129,6 +160,7 @@ class postViewController: UIViewController,UINavigationControllerDelegate, UIIma
     }
     
     override func viewDidLoad() {
+        self.shareText.delegate = self
         super.viewDidLoad()
         Parse.setApplicationId("ZJHaDPsK5OS63UJfEv7GGtfKEu2K2wYjFQLMRU3L", clientKey: "fgrift4Ic04xVqQIkvfa6LqQfg7UFCEXjqdmvbbO")
         self.photoSelected = false
@@ -141,6 +173,11 @@ class postViewController: UIViewController,UINavigationControllerDelegate, UIIma
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldShouldReturn(textField: UITextField!) -> Bool // called when 'return' key pressed. return NO to ignore.
+    {
+        textField.resignFirstResponder()
+        return true;
+    }
     
     /*
     // MARK: - Navigation
